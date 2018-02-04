@@ -44,6 +44,7 @@
          (url (apply 'rush-assemble-url args))
          (url-request-extra-headers (rush-assemble-headers))
          (success-function (or (plist-get args :success-function) 'rush-print-data)))
+    (message "Contacting Github at %s..." url)
     (url-retrieve url (apply-partially 'rush-handle-response success-function))))
 
 (provide 'rush-github-client)
